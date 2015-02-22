@@ -1,0 +1,9 @@
+body {
+	margin: 0;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	margin: 40px 40px 5px 10px;
+}
