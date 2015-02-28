@@ -32,10 +32,10 @@
         *                    SETTING                     *
         *				    BACKGROUND 	             	 *
         ************************************************** -->
-    <style media="screen" type="text/css">
+    <style media="screen" type="text/css" >
 body {
-    background: url("images/bg.jpg") no-repeat fixed center center / cover #363843 !important;
-}
+  background-image: url("images/bg.jpg");
+
 </style>
 
 
@@ -80,17 +80,18 @@ body {
     <div id="isc_3" class="normal" onscroll="return isc_VLayout_0._handleCSSScroll()" style="position: relative; top: 7%; width: 779px; margin-left: auto; margin-right: auto; h…072; padding: 0px; box-sizing: border-box;">
     
     <center>
-    <h2 style="color: white; font-family: Century Gothic, Lucida Grande, Arial, sans-sherif;font-weight: 200; 
-    font-size: 40px; font-weight:normal; line-height: 0.0em; margin-bottom: 10px;"><b>SEARCH<b>&nbsp;&nbsp;<b>YOUR 
+    <h2 style="color: #DA4F49; font-family: Century Gothic, Lucida Grande, Arial, sans-sherif;font-weight: 200; 
+    font-size: 50px; font-weight:normal; line-height: 0.0em; margin-bottom: 10px;"><b>SEARCH<b>&nbsp;&nbsp;<b>YOUR 
     </h2></center>
-<hr style="align: center; color:rgba(0,0,0, 0.5); width: 555px; margin-left: auto; margin-right: auto; margin-top: 1.8em; margin-bottom: 0.5em;" />
+<hr style="align: center; height: 4px; width: 575px; margin-left: auto; margin-right: auto; margin-top: 1.8em; margin-bottom: 0.5em; background-color: #999;" />
 
     <center>
-<h1 style="color: rgba(255, 255, 255, 0.85); font-family: Century Gothic, Lucida Grande, Arial, sans-sherif;font-weight: 200; 
+<h1 style=" color: #4F87A2;
+   font-family: Century Gothic, Lucida Grande, Arial, sans-sherif;font-weight: 200; 
     font-size: 180px; font-weight:normal; line-height: 0.7em; padding-bottom">
     <b>FUTURE</b></h1></center>
 
-<hr style="align: center; color:rgba(0,0,0, 0.5); width: 555px; margin-left: auto; margin-right: auto; margin-top: 1.4em; margin-bottom: 0.5em;" />
+<hr style="background-color: #999; align: center; height: 4px; color: black; width: 575px; margin-left: auto; margin-right: auto; margin-top: 1.4em; margin-bottom: 0em;" />
 
 
 
@@ -102,33 +103,95 @@ body {
 
             $query = "SELECT DISTINCT(job_titles.job_id), job_titles.job_title FROM job_titles WHERE (job_id LIKE '%$entry%' OR job_title LIKE '%$entry%' OR category_id LIKE '%$entry%');";
             $result = mysql_query($query);
-        
+
 
         while ($jobs = mysql_fetch_array($result))
         {
-            $output .= "<a  style='color: #FFF;' href='job/job.php?job_id=".$jobs['job_id']."'>".$jobs['job_title']."</a></br>";
-        }
+
+        $result2 = mysql_query("
+                SELECT `job_categories`.`percent_growth`
+                FROM   `job_categories`
+                WHERE  `job_categories`.`category_id` = 'N" .$jobs['job_id']. "'
+            ");
+
+            $percent = mysql_fetch_array($result2);
+
+           
+ $output .= 
+
+                    "<div class='hot-container'>
+                    <a href='job/job.php?job_id=".$jobs['job_id']."'
+             class='btn btn-blue'>".$jobs['job_title'].'&nbsp;&nbsp;&nbsp;&nbsp;'."$percent[0]</a>
+             </div>";
+            }
+           
+        
       }else{
-     echo" <p class='generic' style='color: #FFF; font-family: Century Gothic, Lucida Grande, Arial, sans-sherif; align: center; font-size: 15px;line-height: 1.55em;''>Desicions are hard. We aim to simply them. Search your potential future career and see if it has a promising growth. This empowers the youth of today by making them informed about what lies ahead. Data provided by Canadian Government. Developed for CODE (Canadian Open Data Experience).
+     echo" <p class='generic' style='color: black; margin: 2px; border: solid 2px; border-color: rgba(185, 185, 185, 0.3); padding: 5px; text-align: center; border-radius: 7px; 
+     background-color: rgba(245, 245, 245, 0.85); opaciity: 0.5; font-family: Century Gothic, Lucida Grande, Arial, sans-sherif; align: center; font-size: 15px;line-height: 1.55em;''>
+     Decisions are hard. We aim to simplify them. Simply search a career and see if it has a promising growth. 
+     This empowers the youth of today by making them informed about what lies ahead. 
+     Data provided by Canadian Government. Developed for CODE (Canadian Open Data Experience).
 </p>";
-}?>
-<?php print("<br>");?>
+
+}
+      
+
+?>
+
+
+
+
+
+
 <div id="searchResults">
 <?php print("$output");?>
 </div>
 
 
 <style>
+#box{
+    background:url('img/box_bg.jpg') repeat-x center top #fcfcfc;
+    height:115px;
+    padding:20px;
+    margin-top:-10px;
+    padding-top:30px;
+    width:400px;
+    border:1px solid #fcfcfc;
+    color:#494848;
+    text-shadow:1px 1px 0 white;
+    font-family:'Myriad Pro',Arial,Helvetica,sans-serif;
+}
+
+#box p{
+    font-size:25px;
+    background:url('img/warning.png') no-repeat 10px center;
+    padding-left:90px;
+}
+
+#box p b{
+    font-size:52px;
+    display:block;
+}
+
+#box,
+#main,
+a.button{
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+}
+
+
 #searchResults{
-   
-    background-color: rgba(0,0,0, 0.5);
     text-align: center;
+	margin: 0;
 }
 
 </style>
     <div id="isc_4" style="POSITION:relative;display:inline-block;-moz-box-sizing:borde…-align:top;VISIBILITY:inherit;Z-INDEX:200072;CURSOR:default;" >
      
-        <div id="isc_5" class="normal" onscroll="return isc_HLayout_0._handleCSSScroll()" style="position: absolute; left: 0px; top: 0px; width: 779px; heigh…; box-sizing: border-box; cursor: default;" >
+        <div id="isc_5" class="normal" onscroll="return isc_HLayout_0._handleCSSScroll()" style="position: absolute; left: 0px; top: 0px; width: 579px; heigh…; box-sizing: border-box; cursor: default;" >
 
     <div id="isc_6" style="POSITION:relative;display:inline-block;-moz-box-sizing:borde…-align:top;VISIBILITY:inherit;Z-INDEX:200090;CURSOR:default;" >
         <div id="isc_8" class="loginTopTitle" onscroll="return isc_Img_0._handleCSSScroll()" style="position: absolute; left: 0px; top: 0px; width: 345px; heigh…; box-sizing: border-box; overflow: hidden; cursor: default;" >
@@ -140,7 +203,6 @@ body {
     </div>
 
 </div>
-<div id="isc_9" class="loginFormUser" onscroll="return isc_VLayout_3._handleCSSScroll()" style="position: absolute; left: 0px; top: 77px; width: 780px; heig…; box-sizing: border-box; cursor: default;" >
 
 <!--  TILES TILES TILES TILES  -->
 
