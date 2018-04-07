@@ -6,5 +6,3 @@ This is a web app designed for CODE (Canadian Open Data Exchange), which is a na
 Job Future uses the models of the Canadian Occupational Projection System (COPS) and the National Occupational Classification (NOC, 2006 version) to develop projections of future trends in the numbers of job openings and job seekers by occupation at the national level. 
 
 Link: www.jobfuture.co.nf
-
-![alt text](https://github.com/gkheeva/OnlyCivics/blob/master/img/web_preview.png)
